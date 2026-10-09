@@ -1,0 +1,19 @@
+# Secrets and local data — never commit
+.env
+*.db
+backend/data/
+*.db-journal
+*.db-wal
+*.db-shm
+# ...except the config DB (profile, accounts, widgets), which is committed so the set-up travels with the code
+!backend/config/config.db
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
