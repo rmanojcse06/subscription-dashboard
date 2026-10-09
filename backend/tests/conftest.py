@@ -20,7 +20,7 @@ from app.main import app  # noqa: E402
 @pytest.fixture
 def client():
     Base.metadata.drop_all(engine)
-    with TestClient(app) as c:  # lifespan runs create_all
+    with TestClient(app, base_url="http://127.0.0.1") as c:  # lifespan runs create_all; Host must be local
         yield c
     app.dependency_overrides.clear()
 

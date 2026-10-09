@@ -57,4 +57,8 @@ npm run build    # type check + production build
 
 ## Security
 
-The app has no login and the API can reveal stored keys, so it only listens on `127.0.0.1`. Don't expose port 8000 to a network.
+The app has no login and the API can reveal stored keys, so:
+
+- It only listens on `127.0.0.1`. Don't expose port 8000 to a network.
+- It only answers requests addressed to `127.0.0.1`, `localhost` or `::1`, so a website can't reach it through DNS rebinding.
+- It refuses writes (POST, PUT, DELETE) that a browser marks as coming from another site, so a page you visit can't change or delete anything (CSRF). Tools like curl, which send no `Origin` header, still work.
